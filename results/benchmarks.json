@@ -1,0 +1,35 @@
+{
+    "benchmarks_stats.time_count_call_alleles": {
+        "code": "def time_count_call_alleles() -> None:\n    count_call_alleles(\n        get_dataset(\n            [\n                [[0, 0], [0, 0], [0, 0]],\n                [[0, 0], [0, 0], [0, 1]],\n                [[1, 1], [0, 1], [1, 0]],\n                [[1, 1], [1, 1], [1, 1]],\n            ]\n        )\n    )",
+        "min_run_count": 2,
+        "name": "benchmarks_stats.time_count_call_alleles",
+        "number": 0,
+        "param_names": [],
+        "params": [],
+        "processes": 2,
+        "repeat": 0,
+        "sample_time": 0.01,
+        "timeout": 60.0,
+        "type": "time",
+        "unit": "seconds",
+        "version": "b5056bcda79a202d0d37a01d9dd06e75c853ac4394c2e41448b00f70c3bd7141",
+        "warmup_time": -1
+    },
+    "benchmarks_stats.time_count_cohort_alleles": {
+        "code": "def time_count_cohort_alleles() -> None:\n    ds = get_dataset(\n        [\n            [[0, 0], [0, 0], [0, 0], [0, 0]],\n            [[0, 0], [0, 0], [0, 1], [0, 1]],\n            [[1, 1], [0, 1], [1, 0], [1, 0]],\n            [[1, 1], [1, 1], [1, 1], [1, 1]],\n        ]\n    )\n\n    ds[\"sample_cohort\"] = xr.DataArray(np.array([0, 1, 1, -1]), dims=\"samples\")\n    count_cohort_alleles(ds)",
+        "min_run_count": 2,
+        "name": "benchmarks_stats.time_count_cohort_alleles",
+        "number": 0,
+        "param_names": [],
+        "params": [],
+        "processes": 2,
+        "repeat": 0,
+        "sample_time": 0.01,
+        "timeout": 60.0,
+        "type": "time",
+        "unit": "seconds",
+        "version": "5e0d38c32cf8d8c97305f00a61b6645d80c28e51f382a3594cdd2dc53cc9447b",
+        "warmup_time": -1
+    },
+    "version": 2
+}
