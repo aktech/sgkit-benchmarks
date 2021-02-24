@@ -1,8 +1,8 @@
 {
-    "benchmarks_stats.time_count_call_alleles": {
-        "code": "def time_count_call_alleles() -> None:\n    count_call_alleles(\n        get_dataset(\n            [\n                [[0, 0], [0, 0], [0, 0]],\n                [[0, 0], [0, 0], [0, 1]],\n                [[1, 1], [0, 1], [1, 0]],\n                [[1, 1], [1, 1], [1, 1]],\n            ]\n        )\n    )",
+    "benchmarks_stats.TimeSuite.time_count_call_alleles": {
+        "code": "class TimeSuite:\n    def time_count_call_alleles(self) -> None:\n        count_call_alleles(self.count_call_alleles_ds)\n\n    def setup(self) -> None:\n        self.count_call_alleles_ds = simulate_genotype_call_dataset(\n            n_variant=100_000, n_sample=1000\n        )\n        self.count_cohort_alleles_ds = simulate_genotype_call_dataset(\n            n_variant=100_000, n_sample=1000\n        )\n        sample_cohort = np.repeat(\n            [0, 1], self.count_cohort_alleles_ds.dims[\"samples\"] // 2\n        )\n        self.count_cohort_alleles_ds[\"sample_cohort\"] = xr.DataArray(\n            sample_cohort, dims=\"samples\"\n        )",
         "min_run_count": 2,
-        "name": "benchmarks_stats.time_count_call_alleles",
+        "name": "benchmarks_stats.TimeSuite.time_count_call_alleles",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -12,13 +12,13 @@
         "timeout": 60.0,
         "type": "time",
         "unit": "seconds",
-        "version": "b5056bcda79a202d0d37a01d9dd06e75c853ac4394c2e41448b00f70c3bd7141",
+        "version": "99097810ae6b766dfae46c4f296762848ccf073c2fd2f01204786c3957ae8c42",
         "warmup_time": -1
     },
-    "benchmarks_stats.time_count_cohort_alleles": {
-        "code": "def time_count_cohort_alleles() -> None:\n    ds = get_dataset(\n        [\n            [[0, 0], [0, 0], [0, 0], [0, 0]],\n            [[0, 0], [0, 0], [0, 1], [0, 1]],\n            [[1, 1], [0, 1], [1, 0], [1, 0]],\n            [[1, 1], [1, 1], [1, 1], [1, 1]],\n        ]\n    )\n\n    ds[\"sample_cohort\"] = xr.DataArray(np.array([0, 1, 1, -1]), dims=\"samples\")\n    count_cohort_alleles(ds)",
+    "benchmarks_stats.TimeSuite.time_count_cohort_alleles": {
+        "code": "class TimeSuite:\n    def time_count_cohort_alleles(self) -> None:\n        count_cohort_alleles(self.count_cohort_alleles_ds)\n\n    def setup(self) -> None:\n        self.count_call_alleles_ds = simulate_genotype_call_dataset(\n            n_variant=100_000, n_sample=1000\n        )\n        self.count_cohort_alleles_ds = simulate_genotype_call_dataset(\n            n_variant=100_000, n_sample=1000\n        )\n        sample_cohort = np.repeat(\n            [0, 1], self.count_cohort_alleles_ds.dims[\"samples\"] // 2\n        )\n        self.count_cohort_alleles_ds[\"sample_cohort\"] = xr.DataArray(\n            sample_cohort, dims=\"samples\"\n        )",
         "min_run_count": 2,
-        "name": "benchmarks_stats.time_count_cohort_alleles",
+        "name": "benchmarks_stats.TimeSuite.time_count_cohort_alleles",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -28,7 +28,7 @@
         "timeout": 60.0,
         "type": "time",
         "unit": "seconds",
-        "version": "5e0d38c32cf8d8c97305f00a61b6645d80c28e51f382a3594cdd2dc53cc9447b",
+        "version": "fb11db6a5b627835f0a682aa2ce1c793f9156522529ddfde2938933cc2278ff3",
         "warmup_time": -1
     },
     "version": 2

@@ -1,1 +1,1 @@
-{"regressions": [["benchmarks_stats.time_count_call_alleles", "graphs/branch-HEAD/machine-github-actions/python-3.8/benchmarks_stats.time_count_call_alleles.json", {}, null, 0.003336270124997043, 0.00282643680000092, [[null, 558, 0.00282643680000092, 0.003336270124997043]]], ["benchmarks_stats.time_count_cohort_alleles", "graphs/branch-HEAD/machine-github-actions/python-3.8/benchmarks_stats.time_count_cohort_alleles.json", {}, null, 0.01097440699999197, 0.008713192249999224, [[null, 558, 0.008713192249999224, 0.01097440699999197]]]]}
+{"regressions": []}
